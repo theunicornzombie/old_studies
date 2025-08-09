@@ -173,3 +173,134 @@ print(resultado) #7
 quadrado = lambda x: x ** 2
 print(quadrado(5)) #25
 
+
+"""variável local e global"""
+def funcao():
+    variavel_local = 10
+    print(variavel_local) #Acesso dentro da função
+variavel_global = 20
+def funcao2():
+    print(variavel_global) #Acesso em qualquer lugar
+funcao() #10
+funcao2() #20
+print(variavel_global) #20
+print(variavel_local) #Erro = variável não definida
+
+"""
+definido pelo usuário
+"""
+
+"""documentos/docstring"""
+def area_retangulo(base, altura):
+    """
+    Calcula a área de um retângulo.
+    Args:
+        base (float): A base do retângulo.
+        altura (float): A altura do retângulo.
+    Returns:
+        float: A área do retângulo.
+    """
+    return base * altura
+
+"""vários argumentos"""
+def soma_variavel(*numeros):
+    total = 0
+    for numero in numeros:
+        total += numero
+    return total
+print(soma_variavel(1, 2, 3)) #6
+print(soma_variavel(4, 5, 6, 7)) #22
+
+"""
+exceções
+"""
+
+"""try + except"""
+try:
+    resultado = 10 / 0 
+    print(resultado)
+except ZeroDivisionError:
+    print("Erro: Divisão por zero")
+except ValueError:
+    print("Erro: Valor inválido")
+
+"""finally"""
+try:
+    arquivo = open("arquivo.txt", "r") # Realizar operações com arquivo específico
+except FileNotFoundError:
+    print("Erro: Arquivo não encontrado")
+finally:
+    arquivo.close()  # Fechar arquivo sempre, mesmo com exceção
+
+"""personalizadas"""
+def funcao():
+    if condicao:
+        raise Exception("Descrição do erro")
+try:
+    funcao()
+except Exception as e:
+    print(f"Erro: {str(e)}")
+
+
+""""
+entrada/saída de dados
+"""
+
+"""entrada com 2 exemplos"""
+nome = input("Insira seu nome: ")
+idade = input("Insira sua idade: ")
+print("Olá, " + nome + "!")
+print("Você tem " + idade + " anos.")
+
+idade = int(input("Insira sua idade: "))
+if idade >= 18:
+    print("Você é maior de idade.")
+else:
+    print("Você é menor de idade.")
+
+"""saída"""
+nome = "Juan"
+idade = 25
+print(f"Olá, meu nome é {nome} e tenho {idade} anos.")
+
+""""
+arquivos
+"""
+
+"""leitura"""
+arquivo = open("dados.txt", "r")
+conteudo = arquivo.read()
+print(conteudo)
+arquivo.close()
+
+"""escrita"""
+arquivo = open("dados.txt", "w")
+arquivo.write("Olá, mundo!")
+arquivo.close()
+
+"""escrita com with"""
+with open("dados.txt", "r") as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+
+
+""""
+módulos
+"""
+
+"""importação"""
+import math
+resultado = math.sqrt(25)
+print(resultado) #5.0
+
+from math import sqrt
+resultado = sqrt(25)
+print(resultado) #5.0
+
+"""funcao/classe"""
+import random
+import datetime
+numero_aleatorio = random.randint(1, 10)
+print(numero_aleatório)  # nº inteiro aleatório entre 1-10
+data_atual = datetime.datetime.now()
+print(data_atual)  #data + hora atual
