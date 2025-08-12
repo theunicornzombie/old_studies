@@ -304,3 +304,51 @@ numero_aleatorio = random.randint(1, 10)
 print(numero_aleatório)  # nº inteiro aleatório entre 1-10
 data_atual = datetime.datetime.now()
 print(data_atual)  #data + hora atual
+
+"""próprio"""
+#meu_modulo.py
+def saudar(nome):
+    print(f"Olá, {nome}!")
+def calcular_soma(a, b):
+    return a + b
+
+#arquivo_importacao.py
+import meu_modulo
+meu_modulo.saudar("João") #"Olá, João!"
+resultado = meu_modulo.calcular_soma(5, 3)
+print(resultado) #8
+
+"""organizacao do código"""
+# operacoes.py
+def somar(a, b):
+    return a + b
+def subtrair(a, b):
+    return a - b
+
+# utilidades.py
+def imprimir_mensagem(mensagem):
+    print(mensagem)
+def obter_nome_usuario():
+    return input("Digite seu nome: ")
+
+#importacao para programa principal
+import operacoes
+import utilidades
+
+resultado = operacoes.somar(5, 3)
+utilidades.imprimir_mensagem(f"O resultado da soma é: {resultado}")
+nome = utilidades.obter_nome_usuario()
+utilidades.imprimir_mensagem(f"Olá, {nome}!")
+
+"""
+pacotes
+"""
+#criar
+meu_pacote/
+    __init__.py
+    modulo1.py
+    modulo2.py
+#importar para programa
+from meu_pacote import modulo1, modulo2
+modulo1.funcao1()
+modulo2.funcao2()
